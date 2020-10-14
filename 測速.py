@@ -50,10 +50,10 @@ try:
     global dist_error
     dist_error = False
     while True:
-        #velocity = get_velocity()
-        spe=[31,25,15,5]
-        i = random.choice(spe)
-        velocity = i
+        velocity = get_velocity() #取自感測器運算速度
+        #spe=[31,25,15,5]  #測試用固定速度Random
+        #i = random.choice(spe)
+        #velocity = i
         if  dist_error:
              print("Range Error : Range 2-400 cm")
         else:
