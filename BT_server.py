@@ -39,8 +39,7 @@ try:
             acount += 1
         count = acount + bcount
         if count == 20 :
-            print("一分鐘內有:",acount,"起超速")
-            print("平均車速 : %.2f cm/sec", %mean(speedlist))
+            print("一分鐘內有:%s起超速，平均車速:%.2f cm/sec",%(acount,mean(speedlist)))
         print("Velocity : %.2f cm/sec" %velocity)
         time.sleep(3)
             
