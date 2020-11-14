@@ -23,29 +23,29 @@ def on_connect(client,userdata,flags,rc):
     Connected = True
 
 def on_message(client,userdata,msg):
-    if msg.topic == "AF":
+    if msg.topic == "AF": #判斷是否為A農場
         msg.payload = float(msg.payload)
-        if msg.payload <= 28 :
+        if msg.payload <= 28 : #溫度小於28度
             GPIO.output(pin, False)
-            GPIO.output(2, True)
+            GPIO.output(2, True) #開綠燈
             print(msg.topic+" Temp: "+str(msg.payload)+" Green ")
-        elif msg.payload <= 32 :
+        elif msg.payload <= 32 : #溫度介於28~32度
             GPIO.output(pin, False)
-            GPIO.output(20, True)
+            GPIO.output(20, True) #開黃燈
             print(msg.topic+" Temp: "+str(msg.payload)+" Yellow ")
-        else :
+        else : #溫度大於32度
             GPIO.output(pin, False)
-            GPIO.output(19, True)
+            GPIO.output(19, True) #開紅燈
             print(msg.topic+" Temp: "+str(msg.payload)+" Red ")
-    if msg.topic == "BF":
+    if msg.topic == "BF": #判斷是否為B農場
         msg.payload = float(msg.payload)
-        if msg.payload <= 28 :
+        if msg.payload <= 28 : #溫度小於28度
             SetAngle(onC) #馬達轉0
             print(msg.topic+" Temp: "+str(msg.payload)+" 0 ")
-        elif msg.payload <= 32 :
+        elif msg.payload <= 32 : #溫度介於28~32度
             SetAngle(onB) #馬達轉90
             print(msg.topic+" Temp: "+str(msg.payload)+" 90 ")
-        else :
+        else : #溫度大於32度
             SetAngle(onA) #馬達轉180
             print(msg.topic+" Temp: "+str(msg.payload)+" 180 ")
 
@@ -59,7 +59,7 @@ client.loop_start()        #start the loop
 
 while Connected != True:    #Wait for connection
     time.sleep(0.1)
-client.subscribe([("AF",0),("BF",0)])
+client.subscribe([("AF",0),("BF",0)]) #訂閱A農場與B農場
 
 try:
     while True:
