@@ -1,8 +1,11 @@
 from numpy import *
 import paho.mqtt.client as mqtt
 import time
+import os
 
-TopicServerIP = "127.0.0.1"
+addr = str(input(請輸入IP : ))
+print(addr)
+TopicServerIP = addr
 TopicServerPort = 1883
 TopicName = "AF"
 temp_list = []
@@ -19,3 +22,4 @@ while True:
         mqttc.publish(TopicName,str(b))
         print(b)
     time.sleep(random.uniform(5,10))
+os.system("pause")
