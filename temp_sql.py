@@ -7,10 +7,10 @@ import os
 try:
     # 連接 MySQL/MariaDB 資料庫
     connection = mysql.connector.connect(
-        host='158.101.170.102', # 主機名稱
+        host='100.100.100.100', # 主機名稱
         database='temp', # 資料庫名稱
-        user='repk1124', # 帳號
-        password='851124')  # 密碼
+        user='OOO', # 帳號
+        password='XXX')  # 密碼
     while True:
         temp = round(random.uniform(20, 40), 2)
         humi = round(random.uniform(0, 100), 2)
@@ -22,7 +22,7 @@ try:
         cursor = connection.cursor()
         cursor.execute(sql, new_data)
         print(humi, temp, currentTime)
-        time.sleep(59)
+        time.sleep(10)
         # 確認資料有存入資料庫
         connection.commit()
 
