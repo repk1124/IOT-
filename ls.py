@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(2,GPIO.OUT)    #Green
-GPIO.setup(19, GPIO.OUT)
+GPIO.setup(2,GPIO.OUT)    #光敏
+GPIO.setup(19, GPIO.OUT)  #紅燈
 pin = [2,19]
 
 def SetupPhotoresistor(GPIOpin):
